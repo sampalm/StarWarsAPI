@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/sampalm/starwars/config"
+	"github.com/sampalm/StarWarsAPI/config"
 
 	"github.com/stretchr/testify/assert"
 )
