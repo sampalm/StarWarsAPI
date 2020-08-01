@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/sampalm/starwars/config"
-	c "github.com/sampalm/starwars/controllers"
+	"github.com/sampalm/StarWarsAPI/config"
+	c "github.com/sampalm/StarWarsAPI/controllers"
 )
 
 func init() {

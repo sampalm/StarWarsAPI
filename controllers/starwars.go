@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/sampalm/starwars/models"
+	"github.com/sampalm/StarWarsAPI/models"
 )
 
 func SearchPlanetaAPI(s string) (count int, err error) {

@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/sampalm/starwars/controllers"
+	"github.com/sampalm/StarWarsAPI/controllers"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

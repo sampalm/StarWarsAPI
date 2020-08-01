@@ -13,7 +13,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sampalm/starwars/models"
+	"github.com/sampalm/StarWarsAPI/models"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
