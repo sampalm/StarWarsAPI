@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"strings"
 	"sync/atomic"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -138,6 +139,15 @@ func QueryPlaneta(c *gin.Context) {
 func CreatePlaneta(c *gin.Context) {
 	var body models.Planeta
 	c.BindJSON(&body)
+
+	if len(strings.TrimSpace(body.Clima)) == 0 || len(strings.TrimSpace(body.Terreno)) == 0 {
+		log.Printf("Erro dados incompletos\n")
+		c.JSON(http.StatusBadRequest, gin.H{
+			"status":  http.StatusBadRequest,
+			"message": "Erro dados incompletos",
+		})
+		return
+	}
 
 	count, err := SearchPlanetaAPI(body.Nome)
 
