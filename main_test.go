@@ -29,6 +29,14 @@ func TestCreatePlaneta(t *testing.T) {
 	router := NewRouter()
 	w := request(router, "POST", "/planetas/create", data)
 	assert.Equal(t, http.StatusCreated, w.Code)
+
+	data = []byte(`{"nome": "Tatooine","clima": " ","terreno": ""}`)
+	w = request(router, "POST", "/planetas/create", data)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
+
+	data = []byte(`{"nome": " ","clima": "temperate","terreno": "grasslands, mountains"}`)
+	w = request(router, "POST", "/planetas/create", data)
+	assert.Equal(t, http.StatusBadRequest, w.Code)
 }
 
 // Lista todos os planetas cadastrados no banco de dados. Deve retornar o codigo 200.
