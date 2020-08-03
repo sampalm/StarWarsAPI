@@ -43,6 +43,9 @@ func convertQueryToID(s string) int32 {
 	}
 	return id
 }
+func isEmpty(s string) bool {
+	return len(strings.TrimSpace(s)) == 0
+}
 
 func ListPlanetas(c *gin.Context) {
 	ctx := context.Background()
@@ -140,7 +143,7 @@ func CreatePlaneta(c *gin.Context) {
 	var body models.Planeta
 	c.BindJSON(&body)
 
-	if len(strings.TrimSpace(body.Clima)) == 0 || len(strings.TrimSpace(body.Terreno)) == 0 {
+	if isEmpty(body.Nome) || isEmpty(body.Clima) || isEmpty(body.Terreno) {
 		log.Printf("Erro dados incompletos\n")
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  http.StatusBadRequest,
@@ -155,7 +158,7 @@ func CreatePlaneta(c *gin.Context) {
 		log.Printf("Erro resquest incompleto. Erro: %s\n", err)
 		c.JSON(http.StatusBadRequest, gin.H{
 			"status":  http.StatusBadRequest,
-			"message": "Erro resquest incompleto ou dados incorretos.",
+			"message": "Erro planeta nao existe ou dados incorretos.",
 		})
 		return
 	}
