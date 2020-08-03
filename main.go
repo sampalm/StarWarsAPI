@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	config.Conn()
+	config.Conn("starwars")
 }
 
 func main() {

@@ -12,7 +12,7 @@ import (
 )
 
 func init() {
-	config.Conn()
+	config.Conn("starwars_test")
 }
 
 func request(h http.Handler, method string, path string, data []byte) *httptest.ResponseRecorder {

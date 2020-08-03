@@ -15,7 +15,7 @@ import (
 var dbuser = os.Getenv("MONGO_USER")
 var dbpass = os.Getenv("MONGO_PASS")
 
-func Conn() {
+func Conn(database string) {
 	// DATABASE CONNECTION
 	uri := fmt.Sprintf("mongodb+srv://%s:%s@cluster0.r7mjg.mongodb.net/<dbname>?retryWrites=true&w=majority", dbuser, dbpass)
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
@@ -29,6 +29,6 @@ func Conn() {
 	}
 	defer cancel()
 	// DATABASE COLLETIONS
-	db := client.Database("starwars")
+	db := client.Database(database)
 	controllers.PlanetaCollection(db)
 }
